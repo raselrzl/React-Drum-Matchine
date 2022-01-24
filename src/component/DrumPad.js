@@ -17,5 +17,7 @@ export default function DrumPad() {
       <button className='drum-pad' id="X">X</button>
       <button className='drum-pad' id="C">C</button>
       </div>
+
+      
   </div>;
 }
