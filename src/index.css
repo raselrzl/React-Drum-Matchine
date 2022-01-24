@@ -5,9 +5,23 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
+  
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+#drum-machine{
+  margin-top: 150px;
+  padding: 15px;
+  border: 2px solid;
+  width: 70%;
+}
+button{
+  height:75px;
+  width: 120px;
+  margin: 7px;
+}
+
