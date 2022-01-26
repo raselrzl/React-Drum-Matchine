@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from "react";
 
 
-export const firstSoundGroup = [
+ const firstSoundGroup = [
   {
     keyCode: 81,
     keyTrigger: 'Q',
@@ -58,7 +58,7 @@ export const firstSoundGroup = [
   }
 ];
 
-export const secondSoundGroup = [
+ const secondSoundGroup = [
   {
     keyCode: 81,
     keyTrigger: 'Q',
@@ -116,23 +116,23 @@ export const secondSoundGroup = [
 ];
 
 
-export const soundsName={
+const soundsName={
   heaterKit:'Heater Kit',
   smoothPianoKit:'Smooth Piano Kit'
 }
 
-export const soundsGroup={
+const soundsGroup={
   heaterKit: firstSoundGroup,
   smoothPianoKit: secondSoundGroup
 }
 
 
 
-const DrumPadKey=( {play, sound: {keyTrigger, url, keyCode} })=>{
+const DrumPadKey=( {play, sound: {id, keyTrigger, url, keyCode} })=>{
 
   const handleKeydown=(e)=>{
     if(e.keyCode === keyCode){
-      play(keyTrigger)
+      play(keyTrigger, id)
     }
   }
 useEffect(() => {
@@ -141,37 +141,31 @@ useEffect(() => {
 
 
  return ( 
-        <button className="drum-pad" onClick={()=>play(keyTrigger)}>
+        <button className="drum-pad" id={keyCode} onClick={()=>play(keyTrigger, id)}>
             <audio className="clip" src={url} id={keyTrigger}></audio>
             {keyTrigger}
         </button>
  )}
 
 const DrumPad=({ play, sounds })=>
-           <div className="keyboard">
+             <div className="keyboard">
                 { sounds.map((sound)=> <DrumPadKey play={play} sound={sound}/>)  }
             </div> 
-const Controller=({changeSoundsGroup})=>{
-        return <div id="controller">
-              <div>
-             
-              </div>
-          <div id="vol-Button">
-    
-          </div>
-          <div>
-              <button onClick={changeSoundsGroup}>CSG</button>
-         </div>
-     
-  </div>;
+const Controller=({changeSoundsGroup, name})=>{
+        return <div id="controller">                 
+                  <h3 id="display">{ name }</h3>                      
+                  <button onClick={changeSoundsGroup}>Change Track</button>
+                </div>;
 }
 
 
 function App() {
+  const [soundName, setSoundName]=useState('')
   const [soundsType, setSoundsType]=useState('heaterKit')
   const [sounds, setSounds]=useState(soundsGroup[soundsType])
 
-  const play=(keyTrigger)=>{
+  const play=(keyTrigger, sound)=>{
+    setSoundName(sound)
     const audio=document.getElementById(keyTrigger)
     audio.currentTime=0;
     audio.play()  
@@ -180,6 +174,7 @@ function App() {
 
 
   const changeSoundsGroup=()=>{
+      setSoundName("")
       if(soundsType==="heaterKit"){
         setSoundsType('smoothPianoKit')
         setSounds(soundsGroup.smoothPianoKit)
@@ -192,11 +187,11 @@ function App() {
 
   return (
     <div id="drum-machine">
-        <div  id="display">
+        <div  >
           {<DrumPad play={play} sounds={sounds}/>}
         </div>
         <div id="controller">
-          {<Controller changeSoundsGroup={changeSoundsGroup}/>}
+          {<Controller name={soundName || soundsName[soundsType]} changeSoundsGroup={changeSoundsGroup}/>}
         </div>
     </div>
     
