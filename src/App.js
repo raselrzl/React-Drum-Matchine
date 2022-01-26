@@ -56,6 +56,7 @@ import React, { useState, useEffect} from "react";
     id: 'Closed-HH',
     url: 'https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3'
   }
+  
 ];
 
  const secondSoundGroup = [
@@ -148,7 +149,7 @@ useEffect(() => {
  )}
 
 const DrumPad=({ play, sounds })=>
-             <div className="keyboard">
+             <div className="keyboard flexItem">
                 { sounds.map((sound)=> <DrumPadKey play={play} sound={sound}/>)  }
             </div> 
 const Controller=({changeSoundsGroup, name})=>{
@@ -187,7 +188,7 @@ function App() {
 
   return (
     <div id="drum-machine">
-        <div  >
+        <div  className="myFlex">
           {<DrumPad play={play} sounds={sounds}/>}
         </div>
         <div id="controller">

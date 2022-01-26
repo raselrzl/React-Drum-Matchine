@@ -1,23 +1,20 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #363844;
   text-align: center;
-  display: grid;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
   overflow: hidden;
+  display: flex;
+  justify-content:center;
+  align-content:center;
   
 }
 
 #drum-machine{
   margin-top: 50px;
+  padding: 20px;
 
 }
 button{
@@ -30,7 +27,6 @@ button{
   box-shadow:  13px 13px 15px #16161b,
              -13px -13px 15px #565a6d;
   height: 100px;
-  justify-content: center;
   margin-right: 4rem;
   width: 100px;
   margin: 7px;
@@ -43,10 +39,12 @@ button{
   color: aliceblue;
   font-size: large;
   font-weight: 900;
-  background-color: #27272b;
   justify-content: center;
   width: 100%;
-  border-radius: 5px;
+  border-radius: 13px;
+  background: #363844;
+  box-shadow: inset 14px 14px 25px #2e303a,
+              inset -14px -14px 25px #3e404e;
   
 }
 
@@ -57,7 +55,10 @@ button{
   box-shadow:  none;
   margin: 0px;
   margin-top: 10px;
-  border-radius: 5px;
+  border-radius: 26px;
+background: linear-gradient(145deg, #3a3c49, #31323d);
+box-shadow:  5px 5px 10px #16161b,
+             -5px -5px 10px #565a6d;
 
 }
 
@@ -71,11 +72,9 @@ button{
 
 
 
-.keyboard{
-  display: grid;
-  grid-gap: 6px;
-  grid-template-columns: 4fr 4fr 4fr;
-  
+
+.myFlex{
+  width: 400px;
 }
   #controller h3{
   width: auto;
